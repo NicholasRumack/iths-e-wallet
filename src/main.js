@@ -18,6 +18,24 @@ new Vue({
         ccv: "123",
         vendor: "BitCoin"
 
+      },
+      {
+        cardnumber: "1234 4567 8910 1112",
+        cardholder: "Peter Pan",
+        month: "11",
+        year: "23",
+        ccv: "123",
+        vendor: "BitCoin"
+
+      },
+      {
+        cardnumber: "1234 4567 8910 1112",
+        cardholder: "Peter Pan",
+        month: "11",
+        year: "23",
+        ccv: "123",
+        vendor: "BitCoin"
+
       }],
     }
   },

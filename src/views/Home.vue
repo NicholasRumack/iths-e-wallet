@@ -7,7 +7,8 @@
     v-bind:cardnumber="this.$root.$data.cardnumber"
    
     />
-    <button>ADD A NEW CARD</button>
+    <!--This button needs to become a router link-->
+    <router-link to="/AddCard" class="addButton">ADD A NEW CARD</router-link>
   </div>
 </template>
 
@@ -31,3 +32,14 @@ export default {
   }
 };
 </script>
+<style>
+  .addButton{
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    padding: 15px 50px 15px 50px;
+ }
+</style>

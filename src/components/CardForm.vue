@@ -3,11 +3,11 @@
      <div class="cardWrapper">
         <p>{{cardnumber}}</p>
         <p>{{cardholder}}</p>
-        <p>{{month}}/{{year}}</p>
+        <p>{{month}}{{year}}</p>
       </div>  
         <p>
           <label for="cardnumber">CARD NUMBER:</label>
-          <input id="cardnumber" v-model="cardnumber">
+          <input class="field" id="cardnumber" v-model="cardnumber">
         </p>
         <p>
           <label for="cardholder">CARDHOLDER NAME:</label>
@@ -15,28 +15,8 @@
         </p>
         <p>
           <label for="validthru">VALID THRU:</label>
-          <select id="month" v-model="month">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-          </select>
-          <select id="month" v-model="year">
-            <option>21</option>
-            <option>22</option>
-            <option>23</option>
-            <option>24</option>
-            <option>25</option>
-            <option>26</option>
-          </select>
+          <input id="month" v-model="month">
+          <input id="month" v-model="year">
         </p>
         <p>
           <label for="ccv">CCV:</label>
@@ -53,7 +33,7 @@
         </p>
          
         <p>
-          <input type="submit" value="ADD CARD">  
+          <input class="addButton" type="submit" value="ADD CARD">  
         </p>    
 
            
@@ -105,3 +85,35 @@ methods: {
 
 </script>
 
+<style>
+ .addButton{
+  border-style: solid;
+    border-color: black;
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    padding: 15px 50px 15px 50px;
+ }
+ 
+/*  .field{
+   border-style: solid;
+   border-color: black;
+   background-color: white;
+   border-radius: 10px;
+   border-width: 1px;
+   
+ } */
+
+input, label {
+  display: block;
+}
+
+input, textarea {
+  width: 30%;
+  padding: 20px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  align-items: center;
+}
+</style>

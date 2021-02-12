@@ -6,10 +6,12 @@
 </template>
 
 <script>
+/* 
 export default {
-/*   name: 'Top',
+  name: 'Top',
   props: {
     msg: String
-  } */
-}
+  }
+},
+ */
 </script>

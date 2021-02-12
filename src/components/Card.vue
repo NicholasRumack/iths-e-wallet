@@ -34,6 +34,13 @@ props: {
 
 <style>
     .cardWrapper {
-        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        min-height: 300px;
+        width: 450px;
+        background-color: lightgray;
+        border-radius: 10px;
           }
+
 </style>
