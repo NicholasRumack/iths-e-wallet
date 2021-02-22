@@ -1,22 +1,17 @@
 <template>
-   <form v-on:submit='onSubmit' id=addcard>
-     <div class="cardWrapper">
-        <p>{{cardnumber}}</p>
-        <p>{{cardholder}}</p>
-        <p>{{month}}{{year}}</p>
-      </div>  
+   <form>
         <p>
           <label for="cardnumber">CARD NUMBER:</label>
-          <input class="field" id="cardnumber" v-model="cardnumber">
+          <input id="cardnumber" maxlength="16" v-model="$root.$data.defaultCard.cardnumber" placeholder="XXXX XXXX XXXX XXXX XXXX">
         </p>
         <p>
           <label for="cardholder">CARDHOLDER NAME:</label>
-          <input id="cardholder" v-model="cardholder" placeholder="FIRSTNAME LASTNAME">
+          <input id="cardholder" v-model="$root.$data.defaultCard.cardholder" placeholder="FIRSTNAME LASTNAME">
         </p>
         <p>
-          <label for="validthru">VALID THRU:</label>
-          <input id="month" v-model="month">
-          <input id="month" v-model="year">
+          <label class="valid" for="validthru">VALID THRU:</label>
+          <input class="month" id="month" placeholder="MM" v-model="$root.$data.defaultCard.month">
+          <input class="year" id="month" placeholder="YY" v-model="$root.$data.defaultCard.year">
         </p>
         <p>
           <label for="ccv">CCV:</label>
@@ -24,16 +19,16 @@
         </p>
         <p>
           <label for="vendor">VENDOR:</label>
-          <select id="vendor" v-model="vendor">
-            <option value="bitcoin">BITCOIN INC</option>
-            <option value="ninjabank">NINJA BANK</option>
-            <option value="blockchaininc">BLOCK CHAIN INC</option>
-            <option value="evilcorp">EVIL CORP</option>
+          <select id="vendor" v-model="$root.$data.defaultCard.vendor">
+            <option value="bitCoin">BITCOIN INC</option>
+            <option value="ninjaBank">NINJA BANK</option>
+            <option value="blockChaininc">BLOCK CHAIN INC</option>
+            <option value="evilCorp">EVIL CORP</option>
           </select>
         </p>
          
         <p>
-          <input class="addButton" type="submit" value="ADD CARD">  
+          <button class="addButton" v-on:click="addCard">ADD CARD </button>  
         </p>    
 
            
@@ -43,34 +38,52 @@
 
 <script>
 
+
 export default {
 
         data() {
             return{
-            cardnumber: '',
-            cardholder: '',
-            month: '',
-            year: '',
-            ccv: '',
-            vendor: ''
+            cardnumber: "",
+            cardholder: "",
+            month: "",
+            year: "",
+            ccv: "",
+            vendor: "",
         }
-}, 
+},
+
 methods: {
   /*This need to turn into a v-on function, const card should be moved into the push*/
-    onSubmit () {
-        const card = {
-            cardnumber: this.cardnumber,
-            cardholder: this.cardholder,
-            month: this.month,
-            year: this.year,
-            ccv: this.ccv,
-            vendor: this.vendor
-        }
-        this.$root.$data.card.push(card);
-        console.log('form was submitted', this.card)
+    addCard () {
+        /* const card =  */
+        this.$root.$data.autoId++;
+        this.$root.$data.defaultCard.id = this.$root.$data.autoID;
+        this.$root.$data.cards.push(this.$root.$data.defaultCard);
+
+        let defaultCard = {
+            id:"",
+            cardnumber: "",
+            cardholder: "",
+            month: "",
+            year: "",
+            vendor: "defaultCard",}
+        this.$root.$data.defaultCard = defaultCard;    
+        this.$router.push('/')
+        console.log('form was submitted', this.cards)
         }
     
 },
+
+    numberError() {
+      let number = this.$root.$data.defaultCard.cardnumber
+
+      if (number.length > 16) {
+        return this.formError = "form-error";
+      }
+      else {
+        return this.formError = "";
+      }
+    }
 
 /*    */
 /* props: {
@@ -86,6 +99,7 @@ methods: {
 </script>
 
 <style>
+
  .addButton{
   border-style: solid;
     border-color: black;
@@ -109,11 +123,22 @@ input, label {
   display: block;
 }
 
-input, textarea {
-  width: 30%;
+input, textarea, select {
+  width: 400px;
   padding: 20px 10px;
   border-radius: 10px;
+  border-width: 1px;
   display: inline-block;
-  align-items: center;
+  align-content: center;
+}
+
+.month {
+  width: 185px;
+  margin-right: 5px;
+}
+
+.year {
+  width: 185px;
+  margin-left: 5px;
 }
 </style>
