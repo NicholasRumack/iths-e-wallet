@@ -1,5 +1,5 @@
 <template>
-   <form>
+   <form @submit.prevent="addCard">
         <p>
           <label for="cardnumber">CARD NUMBER:</label>
           <input id="cardnumber" maxlength="16" v-model="$root.$data.defaultCard.cardnumber" placeholder="XXXX XXXX XXXX XXXX XXXX">
@@ -10,27 +10,24 @@
         </p>
         <p>
           <label class="valid" for="validthru">VALID THRU:</label>
-          <input class="month" id="month" placeholder="MM" v-model="$root.$data.defaultCard.month">
-          <input class="year" id="month" placeholder="YY" v-model="$root.$data.defaultCard.year">
+          <input class="month" maxlength="2" id="month" placeholder="MM" v-model="$root.$data.defaultCard.month">
+          <input class="year" maxlength="2" id="month" placeholder="YY" v-model="$root.$data.defaultCard.year">
         </p>
         <p>
           <label for="ccv">CCV:</label>
-          <input id="ccv" v-model="ccv">
+          <input id="ccv" maxlength="3" v-model="ccv">
         </p>
         <p>
           <label for="vendor">VENDOR:</label>
-          <select id="vendor" v-model="$root.$data.defaultCard.vendor">
+          <select id="vendor" v-model="$root.$data.defaultCard.vendor" v-on:change="style($event, )">
             <option value="bitCoin">BITCOIN INC</option>
             <option value="ninjaBank">NINJA BANK</option>
             <option value="blockChaininc">BLOCK CHAIN INC</option>
             <option value="evilCorp">EVIL CORP</option>
           </select>
         </p>
-         
-        <p>
-          <button class="addButton" v-on:click="addCard">ADD CARD </button>  
-        </p>    
-
+      
+       <input type="submit" value="ADD CARD" class="addButton">
            
       </form>
       
@@ -41,16 +38,6 @@
 
 export default {
 
-        data() {
-            return{
-            cardnumber: "",
-            cardholder: "",
-            month: "",
-            year: "",
-            ccv: "",
-            vendor: "",
-        }
-},
 
 methods: {
   /*This need to turn into a v-on function, const card should be moved into the push*/
@@ -85,15 +72,6 @@ methods: {
       }
     }
 
-/*    */
-/* props: {
-  cardnumber: String,
-  cardholder: String,
-  month: String,
-  year: String,
-  ccv: String,
-  vendor: Boolean
-} */
 }
 
 </script>

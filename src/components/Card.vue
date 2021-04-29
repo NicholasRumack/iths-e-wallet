@@ -1,8 +1,10 @@
 <template>
-    <div class="defaultCard" v-bind:class="cardColor">
-        <p>{{number}}</p>
-        <p>{{fName}}</p> 
-        <p>{{valid}}</p> 
+    <div class="defaultCard" >
+        <img class="chip" src="@/assets/chip-light.svg" alt="">
+        <img class="icon" src="@/assets/vendor-bitcoin.svg" alt="">
+        <p class="cardnumber">{{cardNumberDisplay}}</p>
+        <p class="name">{{cardholder}}</p> 
+        <p class="date">{{month}}/{{year}}</p> 
     </div>
 </template>
 
@@ -13,27 +15,21 @@ import CardForm from '@/components/CardForm.vue' */
 
 export default {
 computed: {
-        number() {
-            return this.$root.$data.defaultCard.cardnumber
-        },
-      
-        fName () {
-            return this.$root.$data.defaultCard.cardholder
-        }, 
-        valid () {
-            return this.$root.$data.defaultCard.month + "/" + this.$root.$data.defaultCard.year               
-        }
-},
 
-cardColor(){
+  cardNumberDisplay: function () {
+    return this.cardnumber.substring(0,4) +" "+ this.cardnumber.substring(4,8) +" "+this.cardnumber.substring(8,12) +" "+this.cardnumber.substring(12,16)
+  },
+
+/* cardColor(){
     let className= '';
     switch(this.vendor) {
-        case "bitCoin": className = 'bitCoinCard'; break;
-        case "ninjaBank": className = 'ninjaBankCard'; break;
-        case "blockChain": className = 'blockChainCard'; break;
-        case "evilCorp": className = 'evilCorpCard'; break;
+        case "bitCoin": className = 'bitCoin'; break;
+        case "ninjaBank": className = 'ninjaBank'; break;
+        case "blockChain": className = 'blockChain'; break;
+        case "evilCorp": className = 'evilCorp'; break;
     }
     return className;
+}, */
 },
 
 props: {
@@ -50,64 +46,81 @@ props: {
 
 <style>
     .defaultCard {
-        display: flex;
-        justify-content: center;
-        align-self: center;
-        min-height: 300px;
-        width: 450px;
-        margin-left: 40%;
-        margin-right: 40%;
-        background-color: lightgray;
-        border-radius: 10px;
-        margin: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      min-height: 300px;
+      width: 450px;
+      background-color: lightgray;
+      border-radius: 10px;
+      margin: 10px;
           }
+    .chip {
+      height: 100px;
+      grid-column: 1/2;
+      grid-row: 1/2;
+      margin-top: 30px;
+      margin-left: 20px;
+    }
+    .icon {
+      margin-top: 30px;
+      padding-left: 50px;
+      grid-column: 4/5;
+      grid-row: 1/2;
+    }
+    .cardnumber {
+      grid-column: 1/5;
+      grid-row: 3/4;
+      margin-bottom: -30px;
+      font-size: 35px;
+    }
+    .name {
+      grid-column: 1/2;
+      grid-row: 4/5;
+    }
+    .date {
+      grid-column: 4/5;
+      grid-row: 4/5;
+    }
     .bitCoin {
-        display: flex;
-        justify-content: center;
-        align-self: center;
-        min-height: 300px;
-        width: 450px;
-        margin-left: 40%;
-        margin-right: 40%;
-        background-color: rgb(255, 204, 0);
-        border-radius: 10px;
-        margin: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      min-height: 300px;
+      width: 450px;
+      background-color: rgb(255, 204, 0);
+      border-radius: 10px;
+      margin: 10px;
           }
     .ninjaBank {
-        display: flex;
-        justify-content: center;
-        align-self: center;
-        min-height: 300px;
-        width: 450px;
-        margin-left: 40%;
-        margin-right: 40%;
-        background-color: rgb(81, 81, 81);
-        border-radius: 10px;
-        margin: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      min-height: 300px;
+      width: 450px;
+      background-color: rgb(81, 81, 81);
+      border-radius: 10px;
+      margin: 10px;
           }
     .blockChain {
-        display: flex;
-        justify-content: center;
-        align-self: center;
-        min-height: 300px;
-        width: 450px;
-        margin-left: 40%;
-        margin-right: 40%;
-        background-color: rgb(102, 3, 130);
-        border-radius: 10px;
-        margin: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      min-height: 300px;
+      width: 450px;
+      background-color: rgb(102, 3, 130);
+      border-radius: 10px;
+      margin: 10px;
           }
     .evilCorp {
-        display: flex;
-        justify-content: center;
-        align-self: center;
-        min-height: 300px;
-        width: 450px;
-        margin-left: 40%;
-        margin-right: 40%;
-        background-color: rgb(222, 29, 48);
-        border-radius: 10px;
-        margin: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      min-height: 300px;
+      width: 450px;
+      background-color: rgb(222, 29, 48);
+      border-radius: 10px;
+      margin: 10px;
           }
 
 </style>

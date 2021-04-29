@@ -29,43 +29,45 @@ new Vue({
         vendor: "defaultCard",
       },
 
+      activeCardIndex: 0,
+
       cards:[ {
         id: "1",
         cardnumber: "1234 4567 8910 1112",
         cardholder: "Peter Pan",
         month: "11",
         year: "23",
-        vendor: "BitCoin"
+        vendor: "bitCoin"
 
       },
       {
         id: "2",
         cardnumber: "1234 4567 8910 1113",
-        cardholder: "Peter Pan",
+        cardholder: "Joe Pan",
         month: "11",
         year: "23",
         ccv: "123",
-        vendor: "NinjaBank"
+        vendor: "ninjaBank"
 
       },
       {
         id: "3",
         cardnumber: "1234 4567 8910 1112",
-        cardholder: "Peter Pan",
+        cardholder: "Smiles Pan",
         month: "11",
         year: "23",
         ccv: "123",
-        vendor: "BitCoin"
+        vendor: "evilCorp"
 
       },
       {
         id: "4",
         cardnumber: "1234 4567 8910 1112",
-        cardholder: "Peter Pan",
+        cardholder: "Who Pan",
         month: "11",
         year: "23",
         ccv: "123",
-        vendor: "BitCoin",
+        vendor: "blockChaininc",
 
       }],
     }

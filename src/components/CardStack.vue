@@ -3,8 +3,13 @@
       <ul>
         <li 
         v-for="(card, index) in cardList" :key="index" 
-        v-on:click="activateCard(card)"> 
-        <Card v-bind:activeCard="card" />
+        v-on:click="activateCard(card)"
+        class="stack"> 
+        <Card v-bind:cardnumber="card.cardnumber" 
+              v-bind:cardholder="card.cardholder"
+              v-bind:month="card.month"
+              v-bind:year="card.year"
+               />
         </li>
       </ul>
     </div>
@@ -47,3 +52,15 @@ props: {
 },
 }
 </script>
+
+<style>
+li {
+  list-style: none;
+  margin-bottom: -250px;
+
+}
+
+.stack {
+  z-index: 1;
+}
+</style>
